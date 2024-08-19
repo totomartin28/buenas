@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención al Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button-container {
+            grid-column: span 2;
+            text-align: center;
+        }
+
+        .button-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Atención al Cliente</h1>
+        <form id="clientForm">
+            <div>
+                <label for="forma">Forma:</label>
+                <input type="text" id="forma" required>
+            </div>
+            <div>
+                <label for="codigo">Código de trámite:</label>
+                <input type="text" id="codigo" required>
+            </div>
+            <div>
+                <label for="apellido">Apellido del solicitante:</label>
+                <input type="text" id="apellido" required>
+            </div>
+            <div>
+                <label for="nombre">Nombre del solicitante:</label>
+                <input type="text" id="nombre" required>
+            </div>
+            <div>
+                <label for="dni">DNI:</label>
+                <input type="text" id="dni" required>
+            </div>
+            <div>
+                <label for="cuit">CUIT:</label>
+                <input type="text" id="cuit" required>
+            </div>
+            <div>
+                <label for="cuenta">N° de cuenta:</label>
+                <input type="text" id="cuenta" required>
+            </div>
+            <div>
+                <label for="razon">Razón:</label>
+                <input type="text" id="razon" required>
+            </div>
+            <div>
+                <label for="tipoTramite">Tipo de trámite:</label>
+                <input type="text" id="tipoTramite" required>
+            </div>
+            <div>
+                <label for="expediente">N° Expediente:</label>
+                <input type="text" id="expediente" required>
+            </div>
+            <div>
+                <label for="fecha">Fecha de solicitud:</label>
+                <input type="date" id="fecha" required>
+            </div>
+            <div>
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" required>
+            </div>
+            <div class="button-container">
+                <button type="submit">Agregar a la tabla</button>
+            </div>
+        </form>
+
+        <table id="clientTable">
+            <thead>
+                <tr>
+                    <th>Forma</th>
+                    <th>Código de trámite</th>
+                    <th>Apellido del solicitante</th>
+                    <th>Nombre del solicitante</th>
+                    <th>DNI</th>
+                    <th>CUIT</th>
+                    <th>N° de cuenta</th>
+                    <th>Razón</th>
+                    <th>Tipo de trámite</th>
+                    <th>N° Expediente</th>
+                    <th>Fecha de solicitud</th>
+                    <th>Teléfono</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById('clientForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get form data
+            const forma = document.getElementById('forma').value;
+            const codigo = document.getElementById('codigo').value;
+            const apellido = document.getElementById('apellido').value;
+            const nombre = document.getElementById('nombre').value;
+            const dni = document.getElementById('dni').value;
+            const cuit = document.getElementById('cuit').value;
+            const cuenta = document.getElementById('cuenta').value;
+            const razon = document.getElementById('razon').value;
+            const tipoTramite = document.getElementById('tipoTramite').value;
+            const expediente = document.getElementById('expediente').value;
+            const fecha = document.getElementById('fecha').value;
+            const telefono = document.getElementById('telefono').value;
+
+            // Create new row
+            const newRow = document.createElement('tr');
+            newRow.innerHTML = `
+                <td>${forma}</td>
+                <td>${codigo}</td>
+                <td>${apellido}</td>
+                <td>${nombre}</td>
+                <td>${dni}</td>
+                <td>${cuit}</td>
+                <td>${cuenta}</td>
+                <td>${razon}</td>
+                <td>${tipoTramite}</td>
+                <td>${expediente}</td>
+                <td>${fecha}</td>
+                <td>${telefono}</td>
+            `;
+
+            // Add the new row to the table
+            document.querySelector('#clientTable tbody').appendChild(newRow);
+
+            // Clear the form
+            document.getElementById('clientForm').reset();
+        });
+    </script>
+</body>
+</html>
